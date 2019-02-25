@@ -78,8 +78,8 @@ ctf:
       name: Turkey
       code: TR
     csrfChallenge:
-      name: Suriname
-      code: SR
+      name: Norway
+      code: NO
     changeProductChallenge:
       name: Colombia
       code: CO
