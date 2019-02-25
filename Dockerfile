@@ -28,4 +28,5 @@ RUN addgroup juicer && \
     chmod -R g=u /juice-shop/
 USER juicer
 EXPOSE  3000
+ENV NODE_ENV=ctf
 CMD ["npm", "start"]
